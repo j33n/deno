@@ -85,11 +85,7 @@ install:
   rm -rf "$RUSTUP_HOME"toolchains/*/share
 before_script:
 - ./tools/setup.py
-script:
-- ./tools/lint.py && ./tools/test_format.py
-- bash -c "sleep 2100; pkill ninja" &
-- ./tools/build.py -j2
-- ./tools/test.py $DENO_BUILD_PATH
+script: ./tools/lint.py && ./tools/test_format.py && { bash -c "sleep 2100; pkill ninja" & } && ./tools/build.py -j2 && ./tools/test.py $DENO_BUILD_PATH
 after_script:
 - ccache --show-stats
 - sccache --stop-server
