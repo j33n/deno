@@ -85,7 +85,7 @@ install:
   rm -rf "$RUSTUP_HOME"toolchains/*/etc
   rm -rf "$RUSTUP_HOME"toolchains/*/share
 before_script:
-- rustup component add clippy-preview
+- rustup component add clippy-preview --toolchain stable-x86_64-apple-darwin
 - ./tools/setup.py
 script:
 - ./tools/lint.py
