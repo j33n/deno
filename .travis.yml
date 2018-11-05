@@ -79,6 +79,7 @@ install:
 
 - |-
   # Install rust-clippy for linting rust code
+  rustup update
   rustup component add clippy-preview
 - |-
   # Remove unnnecessary cargo and rustup directories.
@@ -89,7 +90,7 @@ install:
   rm -rf "$RUSTUP_HOME"toolchains/*/etc
   rm -rf "$RUSTUP_HOME"toolchains/*/share
 # before_script:
-# - ./tools/setup.py
+- ./tools/setup.py
 script:
 - ./tools/lint.py
 - ./tools/test_format.py
